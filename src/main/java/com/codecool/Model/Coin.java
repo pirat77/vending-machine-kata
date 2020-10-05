@@ -1,4 +1,4 @@
-package com.codecool;
+package com.codecool.Model;
 
 public enum Coin {
     FIVE(5f),
