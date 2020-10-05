@@ -35,7 +35,7 @@ public class CoinStorage implements Storage<Coin> {
 
     @Override
     public boolean addElement(Coin element) {
-        if (this.getCoins().keySet().contains(element)){
+        if (this.getCoins().containsKey(element)){
             this.getCoins().put(element, this.getCoins().get(element)+1);
         } else {
             this.getCoins().put(element, 1);
