@@ -16,8 +16,6 @@ public final class MachineController {
         return credit;
     }
 
-
-
     public static MachineController getInstance(){
         if (machineController == null) machineController = new MachineController();
         return machineController;
