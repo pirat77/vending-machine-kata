@@ -31,6 +31,7 @@ public class CoinStorage implements Storage<Coin> {
 
     @Override
     public boolean addElement(Coin element) {
+        // in real word scenario should check if there is space for another coin of kind, nice to have
         if (this.getCoins().containsKey(element)){
             this.getCoins().put(element, this.getCoins().get(element)+1);
         } else {
