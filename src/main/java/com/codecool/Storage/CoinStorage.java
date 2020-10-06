@@ -2,12 +2,13 @@ package com.codecool.Storage;
 
 import com.codecool.Model.Coin;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CoinStorage implements Storage<Coin> {
-    private HashMap<Coin, Integer> coins;
-    private HashMap<Coin, Integer> buffer;
+    private Map<Coin, Integer> coins;
+    private Map<Coin, Integer> buffer;
 
-    public HashMap<Coin, Integer> getBuffer() {
+    public Map<Coin, Integer> getBuffer() {
         return buffer;
     }
 
@@ -15,7 +16,7 @@ public class CoinStorage implements Storage<Coin> {
         this.buffer = buffer;
     }
 
-    private HashMap<Coin, Integer> getCoins() {
+    private Map<Coin, Integer> getCoins() {
         return coins;
     }
 
