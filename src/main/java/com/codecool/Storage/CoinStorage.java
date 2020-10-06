@@ -12,7 +12,7 @@ public class CoinStorage implements Storage<Coin> {
         return buffer;
     }
 
-    public void setBuffer(HashMap<Coin, Integer> buffer) {
+    private void setBuffer(HashMap<Coin, Integer> buffer) {
         this.buffer = buffer;
     }
 
