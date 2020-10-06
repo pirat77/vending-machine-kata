@@ -24,13 +24,13 @@ public class CoinStorage implements Storage<Coin> {
     }
 
     public CoinStorage(){
-        this.coins = new HashMap<>();
-        this.buffer = new HashMap<>();
+        this.coins = new HashMap<Coin, Integer>();
+        this.buffer = new HashMap<Coin, Integer>();
     }
 
     public CoinStorage(HashMap<Coin, Integer> coins){
         setCoins(coins);
-        this.buffer = new HashMap<>();
+        this.buffer = new HashMap<Coin, Integer>();
     }
 
     @Override
@@ -45,11 +45,18 @@ public class CoinStorage implements Storage<Coin> {
 
     @Override
     public boolean hasElement(Coin element) {
-        int currentAmmount = getBuffer().get(element);
-        if (currentAmmount == 0){
+        int currentBuffer = 0;
+        int currentAmount = 0;
+        if (getBuffer().keySet().contains(element)){
+            currentBuffer = getBuffer().get(element);
+        }
+        if (getCoins().keySet().contains(element)){
+            currentAmount = getCoins().get(element);
+        }
+        if (currentBuffer == 0 && currentAmount > 0){
             getBuffer().put(element, 1);
             return true;
-        } else if (currentAmmount < getCoins().get(element)){
+        } else if (currentBuffer < currentAmount){
             getBuffer().put(element, getBuffer().get(element)+1);
             return true;
         }
