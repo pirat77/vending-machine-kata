@@ -8,13 +8,13 @@ public enum Coin {
     QUARTER(0.25f),
     TENTH(0.1f);
 
-    private final float ammount;
+    private final float amount;
 
-    private Coin(float ammount){
-        this.ammount = ammount;
+    private Coin(float amount){
+        this.amount = amount;
     }
 
-    public float getAmmount(){
-        return ammount;
+    public float getAmount(){
+        return amount;
     }
 }

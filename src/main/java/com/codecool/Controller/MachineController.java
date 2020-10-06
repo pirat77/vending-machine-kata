@@ -1,4 +1,4 @@
-package com.codecool.Controler;
+package com.codecool.Controller;
 
 import com.codecool.Model.Coin;
 import com.codecool.Storage.CoinStorage;
@@ -41,7 +41,7 @@ public final class MachineController {
         try {
             coin = Coin.valueOf(insertedCoin);
             insertedCoins.addElement(coin);
-            credit+=coin.getAmmount();
+            credit+=coin.getAmount();
         } catch (IllegalArgumentException e){
             return false;
         }
