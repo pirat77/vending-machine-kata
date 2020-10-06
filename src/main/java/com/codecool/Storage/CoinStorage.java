@@ -25,13 +25,13 @@ public class CoinStorage implements Storage<Coin> {
     }
 
     public CoinStorage(){
-        this.coins = new HashMap<Coin, Integer>();
-        this.buffer = new HashMap<Coin, Integer>();
+        this.coins = new HashMap<>();
+        this.buffer = new HashMap<>();
     }
 
     public CoinStorage(HashMap<Coin, Integer> coins){
         setCoins(coins);
-        this.buffer = new HashMap<Coin, Integer>();
+        this.buffer = new HashMap<>();
     }
 
     @Override

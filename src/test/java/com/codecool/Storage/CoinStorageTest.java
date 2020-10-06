@@ -3,7 +3,6 @@ package com.codecool.Storage;
 import com.codecool.Model.Coin;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,12 +44,11 @@ class CoinStorageTest {
 
     @org.junit.jupiter.api.Test
     void clearBuffer() {
-        coinStorage.getBuffer().keySet();
         coinStorage.addElement(Coin.TENTH);
         coinStorage.hasElement(Coin.TENTH);
-        assertTrue(coinStorage.getBuffer().keySet().contains(Coin.TENTH));
+        assertTrue(coinStorage.getBuffer().containsKey(Coin.TENTH));
         coinStorage.clearBuffer();
-        assertFalse(coinStorage.getBuffer().keySet().contains(Coin.TENTH));
+        assertFalse(coinStorage.getBuffer().containsKey(Coin.TENTH));
     }
 
     @org.junit.jupiter.api.Test
