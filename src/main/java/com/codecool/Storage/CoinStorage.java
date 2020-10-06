@@ -29,11 +29,6 @@ public class CoinStorage implements Storage<Coin> {
         this.buffer = new HashMap<>();
     }
 
-    public CoinStorage(HashMap<Coin, Integer> coins){
-        setCoins(coins);
-        this.buffer = new HashMap<>();
-    }
-
     @Override
     public boolean addElement(Coin element) {
         if (this.getCoins().containsKey(element)){
