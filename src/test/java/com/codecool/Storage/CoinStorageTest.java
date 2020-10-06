@@ -29,6 +29,9 @@ class CoinStorageTest {
 
     @org.junit.jupiter.api.Test
     void hasElement() {
+        coinStorage.addElement(Coin.TENTH);
+        assertFalse(coinStorage.hasElement(Coin.FIVE));
+        assertTrue(coinStorage.hasElement(Coin.TENTH));
     }
 
     @org.junit.jupiter.api.Test
