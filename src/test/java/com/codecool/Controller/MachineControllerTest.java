@@ -52,6 +52,6 @@ class MachineControllerTest {
         assertFalse(machineController.makeChange(Product.candy));
         machineController.insertCoin("FIVE");
         assertTrue(machineController.makeChange(Product.candy));
+        assertFalse(machineController.getOwnCoins().hasElement(Coin.TWO));
     }
-
 }
