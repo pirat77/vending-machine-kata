@@ -13,7 +13,7 @@ public final class MachineController {
     private static MachineController machineController;
     private int credit;
 
-    protected CoinStorage getOwnCoins(){
+    protected CoinStorage getOwnStorage(){
         return ownCoins;
     }
 
@@ -56,7 +56,7 @@ public final class MachineController {
     public boolean makeChange(Product product){
         int toReturn = credit - product.getAmount();
         for (Coin coin: Coin.values()){
-            while (toReturn>=coin.getAmount()) {
+            while (ownCoins.hasElement(coin) && toReturn>=coin.getAmount()) {
                 change.addElement(coin);
                 toReturn-=coin.getAmount();
             }
@@ -67,6 +67,7 @@ public final class MachineController {
         } else {
             ownCoins.addElements(insertedCoins.getCoins());
             ownCoins.removeElements(change.getCoins());
+            reset();
             return true;
         }
     }
