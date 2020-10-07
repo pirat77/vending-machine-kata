@@ -70,6 +70,7 @@ public final class MachineController {
                 CoinStorage sideChange = permutation(sideStorage, toReturn+coin.getAmount());
                 if (sideChange != null) {
                     change.addElements(sideStorage.getCoins());
+                    break;
                 }
             }
         }
