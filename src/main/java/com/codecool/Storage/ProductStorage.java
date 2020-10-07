@@ -17,6 +17,9 @@ public class ProductStorage implements Storage<Product> {
     }
 
     @Override
+    public boolean removeElement(Product product){ return false; };
+
+    @Override
     public boolean hasElement(Product element) {
         return false;
     }

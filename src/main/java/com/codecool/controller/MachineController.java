@@ -55,10 +55,22 @@ public final class MachineController {
 
     public boolean makeChange(Product product){
         int toReturn = credit - product.getAmount();
+        if (toReturn < 0) return false;
         for (Coin coin: Coin.values()){
-            while (ownCoins.hasElement(coin) && toReturn>=coin.getAmount()) {
+            while (getOwnStorage().hasElement(coin) && toReturn>=coin.getAmount()) {
                 change.addElement(coin);
                 toReturn-=coin.getAmount();
+            }
+        }
+        if (toReturn > 0){
+            for (Coin coin: change.getCoins().keySet()){
+                CoinStorage sideStorage = new CoinStorage();
+                sideStorage.addElements(getOwnStorage().getCoins());
+                sideStorage.removeElements(change.getCoins());
+                CoinStorage sideChange = permutation(sideStorage, toReturn+coin.getAmount());
+                if (sideChange != null) {
+                    change.addElements(sideStorage.getCoins());
+                }
             }
         }
         if (toReturn != 0){
@@ -70,5 +82,17 @@ public final class MachineController {
             reset();
             return true;
         }
+    }
+
+    private CoinStorage permutation(CoinStorage sideStorage, int toReturn){
+        CoinStorage sideChange = new CoinStorage();
+        for (Coin coin: Coin.values()){
+            while (sideStorage.hasElement(coin) && toReturn>=coin.getAmount()) {
+                sideChange.addElement(coin);
+                toReturn-=coin.getAmount();
+            }
+        }
+        if (toReturn!=0) sideChange = null;
+        return sideChange;
     }
 }

@@ -54,6 +54,16 @@ public class CoinStorage implements Storage<Coin> {
     }
 
     @Override
+    public boolean removeElement(Coin coin){
+        if (getCoins().containsKey(coin)) {
+            getCoins().put(coin, getCoins().get(coin)-1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
     public boolean removeElements(HashMap<Coin, Integer> elements) {
         if (!elements.keySet().stream().allMatch(k -> elements.get(k)<=getCoins().get(k))) return false;
         elements.keySet().forEach(k -> getCoins().put(k, getCoins().get(k)-elements.get(k)));

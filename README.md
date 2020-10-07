@@ -1,3 +1,7 @@
+it's not meant to be perfect oop program, i'm trying to model here realword vending machine (and ATM, working on same principle)
+think of it more as, backward engineering contest
+======================
+
 Vending Machine Kata
 ====================
 
