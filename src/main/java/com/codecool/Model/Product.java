@@ -2,9 +2,9 @@ package com.codecool.Model;
 
 public enum Product {
 
-    cola(1f),
-    chips(0.5f),
-    candy(0.65f);
+    cola(100),
+    chips(50),
+    candy(65);
 
     private final float amount;
 

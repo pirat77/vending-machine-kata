@@ -26,14 +26,14 @@ class MachineControllerTest {
     void insertCoin() {
         assertFalse(machineController.insertCoin("Ziemniak"));
         assertTrue(machineController.insertCoin("FIVE"));
-        assertEquals(5f, machineController.getCredit());
+        assertEquals(500, machineController.getCredit());
     }
 
     @Test
     void acceptMultipleCoins(){
         machineController.insertCoin("FIVE");
         machineController.insertCoin("QUARTER");
-        assertEquals(5.25f, machineController.getCredit());
+        assertEquals(525, machineController.getCredit());
     }
 
     @Test
