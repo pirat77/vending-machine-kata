@@ -20,10 +20,6 @@ public class CoinStorage implements Storage<Coin> {
         return coins;
     }
 
-    private void setCoins(HashMap<Coin, Integer> coins) {
-        this.coins = coins;
-    }
-
     public CoinStorage(){
         this.coins = new HashMap<>();
         this.buffer = new HashMap<>();
@@ -32,24 +28,15 @@ public class CoinStorage implements Storage<Coin> {
     @Override
     public boolean addElement(Coin element) {
         // in real word scenario should check if there is space for another coin of kind, nice to have
-        if (this.getCoins().containsKey(element)){
-            this.getCoins().put(element, this.getCoins().get(element)+1);
-        } else {
-            this.getCoins().put(element, 1);
-        }
+        int currentAmount = this.getCoins().getOrDefault(element, 0);
+        this.getCoins().put(element, currentAmount+1);
         return true;
     }
 
     @Override
     public boolean hasElement(Coin element) {
-        int currentBuffer = 0;
-        int currentAmount = 0;
-        if (getBuffer().keySet().contains(element)){
-            currentBuffer = getBuffer().get(element);
-        }
-        if (getCoins().keySet().contains(element)){
-            currentAmount = getCoins().get(element);
-        }
+        int currentBuffer = getBuffer().getOrDefault(element, 0);
+        int currentAmount = getCoins().getOrDefault(element, 0);
         if (currentBuffer == 0 && currentAmount > 0){
             getBuffer().put(element, 1);
             return true;
