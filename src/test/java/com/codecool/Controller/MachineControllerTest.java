@@ -38,7 +38,6 @@ class MachineControllerTest {
 
     @Test
     void makeChangeTest(){
-        machineController.insertCoin("FIVE");
         CoinStorage availableCoins = machineController.getOwnCoins();
         availableCoins.addElement(Coin.FIVE);
         availableCoins.addElement(Coin.TWO);
@@ -50,6 +49,8 @@ class MachineControllerTest {
         availableCoins.addElement(Coin.QUARTER);
         availableCoins.addElement(Coin.TENTH);
         availableCoins.addElement(Coin.TENTH);
+        assertFalse(machineController.makeChange(Product.candy));
+        machineController.insertCoin("FIVE");
         assertTrue(machineController.makeChange(Product.candy));
     }
 

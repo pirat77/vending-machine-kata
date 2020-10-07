@@ -54,6 +54,15 @@ public final class MachineController {
     }
 
     public boolean makeChange(Product product){
+        float change = credit - product.getAmount();
+        if (change < 0){
+            reset();
+            return false;
+        } else if (change == 0){
+            return true;
+        } else if (change > 0){
+            return true;
+        }
         return false;
     }
 }
