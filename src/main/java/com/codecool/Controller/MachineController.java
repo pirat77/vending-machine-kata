@@ -15,7 +15,7 @@ public final class MachineController {
 
     protected CoinStorage getOwnCoins(){
         return ownCoins;
-    };
+    }
 
     public static MachineController getInstance(){
         if (machineController == null) machineController = new MachineController();
@@ -59,9 +59,10 @@ public final class MachineController {
             reset();
             return false;
         } else if (change == 0){
-
+            ownCoins.addElements(insertedCoins.getCoins());
             return true;
         } else if (change > 0){
+            ownCoins.addElements(insertedCoins.getCoins());
             return true;
         }
         return false;

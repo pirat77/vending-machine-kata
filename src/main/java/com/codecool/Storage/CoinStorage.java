@@ -16,7 +16,7 @@ public class CoinStorage implements Storage<Coin> {
         this.buffer = buffer;
     }
 
-    private Map<Coin, Integer> getCoins() {
+    public Map<Coin, Integer> getCoins() {
         return coins;
     }
 
@@ -73,9 +73,9 @@ public class CoinStorage implements Storage<Coin> {
         return true;
     }
 
-    public boolean addElements(HashMap<Coin, Integer> elements) {
-        elements.keySet().stream().filter(k -> elements.containsKey(k)).forEach(k -> getCoins().put(k, getCoins().get(k)+elements.get(k)));
-        elements.keySet().stream().filter(k -> !elements.containsKey(k)).forEach(k -> getCoins().put(k, elements.get(k)));
+    public boolean addElements(Map<Coin, Integer> elements) {
+        elements.keySet().stream().filter(k -> getCoins().containsKey(k)).forEach(k -> getCoins().put(k, getCoins().get(k)+elements.get(k)));
+        elements.keySet().stream().filter(k -> !getCoins().containsKey(k)).forEach(k -> getCoins().put(k, elements.get(k)));
         return true;
     }
 }
