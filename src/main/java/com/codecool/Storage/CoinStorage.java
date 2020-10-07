@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CoinStorage implements Storage<Coin> {
-    private Map<Coin, Integer> coins;
-    private Map<Coin, Integer> buffer;
+    private HashMap<Coin, Integer> coins;
+    private HashMap<Coin, Integer> buffer;
 
     public Map<Coin, Integer> getBuffer() {
         return buffer;
@@ -16,7 +16,7 @@ public class CoinStorage implements Storage<Coin> {
         this.buffer = buffer;
     }
 
-    public Map<Coin, Integer> getCoins() {
+    public HashMap<Coin, Integer> getCoins() {
         return coins;
     }
 
@@ -60,9 +60,8 @@ public class CoinStorage implements Storage<Coin> {
         return true;
     }
 
-    public boolean addElements(Map<Coin, Integer> elements) {
+    public void addElements(Map<Coin, Integer> elements) {
         elements.keySet().stream().filter(k -> getCoins().containsKey(k)).forEach(k -> getCoins().put(k, getCoins().get(k)+elements.get(k)));
         elements.keySet().stream().filter(k -> !getCoins().containsKey(k)).forEach(k -> getCoins().put(k, elements.get(k)));
-        return true;
     }
 }

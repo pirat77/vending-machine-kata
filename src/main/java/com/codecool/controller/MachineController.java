@@ -54,14 +54,19 @@ public final class MachineController {
     }
 
     public boolean makeChange(Product product){
-        int change = credit - product.getAmount();
-        while (change>0);
-
-        if (change != 0){
+        int toReturn = credit - product.getAmount();
+        for (Coin coin: Coin.values()){
+            while (toReturn>=coin.getAmount()) {
+                change.addElement(coin);
+                toReturn-=coin.getAmount();
+            }
+        }
+        if (toReturn != 0){
             reset();
             return false;
         } else {
             ownCoins.addElements(insertedCoins.getCoins());
+            ownCoins.removeElements(change.getCoins());
             return true;
         }
     }
