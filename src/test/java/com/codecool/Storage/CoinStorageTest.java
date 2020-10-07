@@ -1,6 +1,9 @@
 package com.codecool.Storage;
 
 import com.codecool.Model.Coin;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
@@ -9,40 +12,48 @@ import static org.junit.jupiter.api.Assertions.*;
 class CoinStorageTest {
     CoinStorage coinStorage;
 
-    @org.junit.jupiter.api.BeforeEach
+    @BeforeEach
     void setUp() {
         coinStorage = new CoinStorage();
     }
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
+    @AfterEach
+    void tearDow() {
         coinStorage = null;
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addElement() {
-        assertFalse(coinStorage.hasElement(Coin.FIVE));
+        boolean oldState = coinStorage.hasElement(Coin.FIVE);
         coinStorage.addElement(Coin.FIVE);
-        assertTrue(coinStorage.hasElement(Coin.FIVE));
+        boolean newState = coinStorage.hasElement(Coin.FIVE);
+        assertAll(
+                () -> assertFalse(oldState),
+                () -> assertTrue(newState)
+        );
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void addMultipleElements(){
         coinStorage.addElement(Coin.FIVE);
         coinStorage.addElement(Coin.FIVE);
-        assertTrue(coinStorage.hasElement(Coin.FIVE));
-        assertTrue(coinStorage.hasElement(Coin.FIVE));
-        assertFalse(coinStorage.hasElement(Coin.FIVE));
+        assertAll(
+                () -> assertTrue(coinStorage.hasElement(Coin.FIVE)),
+                () -> assertTrue(coinStorage.hasElement(Coin.FIVE)),
+                () -> assertFalse(coinStorage.hasElement(Coin.FIVE))
+        );
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void hasElement() {
         coinStorage.addElement(Coin.TENTH);
-        assertFalse(coinStorage.hasElement(Coin.FIVE));
-        assertTrue(coinStorage.hasElement(Coin.TENTH));
+        assertAll(
+                () -> assertFalse(coinStorage.hasElement(Coin.FIVE)),
+                () -> assertTrue(coinStorage.hasElement(Coin.TENTH))
+        );
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void clearBuffer() {
         coinStorage.addElement(Coin.TENTH);
         coinStorage.hasElement(Coin.TENTH);
@@ -51,7 +62,7 @@ class CoinStorageTest {
         assertFalse(coinStorage.getBuffer().containsKey(Coin.TENTH));
     }
 
-    @org.junit.jupiter.api.Test
+    @Test
     void removeElements() {
         coinStorage.addElement(Coin.FIVE);
         HashMap<Coin, Integer> coins = new HashMap<>();
