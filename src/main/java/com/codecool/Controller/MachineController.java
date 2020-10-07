@@ -59,6 +59,7 @@ public final class MachineController {
             reset();
             return false;
         } else if (change == 0){
+
             return true;
         } else if (change > 0){
             return true;

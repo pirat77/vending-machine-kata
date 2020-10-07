@@ -72,4 +72,10 @@ public class CoinStorage implements Storage<Coin> {
         elements.keySet().forEach(k -> getCoins().put(k, getCoins().get(k)-elements.get(k)));
         return true;
     }
+
+    public boolean addElements(HashMap<Coin, Integer> elements) {
+        elements.keySet().stream().filter(k -> elements.containsKey(k)).forEach(k -> getCoins().put(k, getCoins().get(k)+elements.get(k)));
+        elements.keySet().stream().filter(k -> !elements.containsKey(k)).forEach(k -> getCoins().put(k, elements.get(k)));
+        return true;
+    }
 }
