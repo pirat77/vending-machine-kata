@@ -8,13 +8,13 @@ public enum Coin {
     QUARTER(25),
     TENTH(10);
 
-    private final float amount;
+    private final int amount;
 
-    private Coin(float amount){
+    private Coin(int amount){
         this.amount = amount;
     }
 
-    public float getAmount(){
+    public int getAmount(){
         return amount;
     }
 }

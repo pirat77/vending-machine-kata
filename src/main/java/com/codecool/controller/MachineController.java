@@ -1,4 +1,4 @@
-package com.codecool.Controller;
+package com.codecool.controller;
 
 import com.codecool.Model.Coin;
 import com.codecool.Model.Product;
@@ -11,7 +11,7 @@ public final class MachineController {
     private CoinStorage change;
     private ProductStorage productStorage;
     private static MachineController machineController;
-    private float credit;
+    private int credit;
 
     protected CoinStorage getOwnCoins(){
         return ownCoins;
@@ -54,17 +54,15 @@ public final class MachineController {
     }
 
     public boolean makeChange(Product product){
-        float change = credit - product.getAmount();
-        if (change < 0){
+        int change = credit - product.getAmount();
+        while (change>0);
+
+        if (change != 0){
             reset();
             return false;
-        } else if (change == 0){
-            ownCoins.addElements(insertedCoins.getCoins());
-            return true;
-        } else if (change > 0){
+        } else {
             ownCoins.addElements(insertedCoins.getCoins());
             return true;
         }
-        return false;
     }
 }

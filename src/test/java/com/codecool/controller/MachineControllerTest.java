@@ -1,4 +1,4 @@
-package com.codecool.Controller;
+package com.codecool.controller;
 
 import com.codecool.Model.Coin;
 import com.codecool.Model.Product;
@@ -52,6 +52,6 @@ class MachineControllerTest {
         machineController.insertCoin("FIVE");
         assertTrue(machineController.makeChange(Product.candy));
         assertTrue(machineController.getOwnCoins().hasElement(Coin.FIVE));
-        //assertFalse(machineController.getOwnCoins().hasElement(Coin.TWO));
+        assertFalse(machineController.getOwnCoins().hasElement(Coin.TWO));
     }
 }

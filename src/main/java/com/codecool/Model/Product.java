@@ -6,13 +6,13 @@ public enum Product {
     chips(50),
     candy(65);
 
-    private final float amount;
+    private final int amount;
 
-    private Product(float amount){
+    private Product(int amount){
         this.amount = amount;
     }
 
-    public float getAmount(){
+    public int getAmount(){
         return amount;
     }
 
