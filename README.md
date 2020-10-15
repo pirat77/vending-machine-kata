@@ -2,6 +2,8 @@ it's not meant to be perfect oop program, i'm trying to model here realword vend
 think of it more as, backward engineering contest
 ======================
 
+![Vending-machine-kata.png](/media/Vending-machine-kata.png)
+
 Vending Machine Kata
 ====================
 
